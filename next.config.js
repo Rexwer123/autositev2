@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['userstyles.org']
+    domains: ['userstyles.org'],
+    unoptimized: true
   }
 }
 
