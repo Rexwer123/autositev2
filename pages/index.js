@@ -185,6 +185,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
+     
       <main className={styles.main}>
         <div className={styles.intro}>
           <h1>АВТОСЕРВИС ВЫСШЕГО КЛАССА</h1>
@@ -196,27 +198,50 @@ export default function Home() {
       <main className={styles.main} style={{ background: `url('https://w7.pngwing.com/pngs/473/267/png-transparent-gradient-desktop-color-background-miscellaneous-blue-atmosphere.png')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', color: 'white', paddingBottom: 100 }} >
         <div className={'container'}>
           <LiftedSection t={'Кто мы?'} p={'Команда профессионалов своего дела, которая вот уже больше 10 лет помогает клиентам решить любые проблемы с автомобилем или мотоциклом'} styles={{ marginTop: 50, marginBottom: 50 }} />
-          <div className='row' style={{marginTop: 100, justifyContent: 'space-between'}}>
-            <div className='col-md-5 col-xs-12' style={{border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35}}>
-              <h3 style={{textAlign: 'left', paddingLeft: 20, paddingTop: 45}}>Услуги по ремонту автомобилей</h3>
-              <ul style={{marginTop: 45, padding: 0}}>
-                <li className='service' style={{fontSize: '1.3em'}}>Установка аудио-оборудования</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Замена сцепления</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Замена радиатора</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Ремонт двигателя</li>
+          <div className='row' style={{ marginTop: 100, justifyContent: 'space-between' }}>
+            <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
+              <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45 }}>Автомобили</h3>
+              <ul style={{ marginTop: 45, padding: 0 }}>
+                <li className='service' style={{ fontSize: '1.3em' }}>Установка аудио-оборудования</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Замена сцепления</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Замена радиатора</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Ремонт двигателя</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Реcтаврация ретро-авто</li>
               </ul>
             </div>
-            <div className='col-md-5 col-xs-12' style={{border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35}}>
-              <h3 style={{textAlign: 'left', paddingLeft: 20, paddingTop: 45}}>Услуги по ремонту мотоциклов</h3>
-              <ul style={{marginTop: 45, padding: 0}}>
-                <li className='service' style={{fontSize: '1.3em'}}>Установка аудио-оборудования</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Замена сцепления</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Замена радиатора</li>
-                <li className='service' style={{fontSize: '1.3em'}}>Ремонт двигателя</li>
+            <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
+              <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45 }}>Мотоциклы</h3>
+              <ul style={{ marginTop: 45, padding: 0 }}>
+                <li className='service' style={{ fontSize: '1.3em' }}>Кастомайзинг</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Ремонт тормозной системы</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Замена колёс и сцепления</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Покраска</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Аерография</li>
+                <li className='service' style={{ fontSize: '1.3em' }}>Ремонт двигателя</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </main>
+
+      <main className={styles.main} style={{background: 'white'}}>          
+        <h1>Контакты</h1>
+        <div className='row' styles={{ height: '100%'}}>
+
+          <div className='col-md-7 col-xs-12'>
+            <div style={{position: "relative", overflow: "hidden"}}><a href="https://yandex.ru/maps/2/saint-petersburg/?utm_medium=mapframe&utm_source=maps" style={{"color": '#eee', fontSize: 12, position: 'absolute', top: 0}}>Saint Petersburg</a><a href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.243838%2C59.948114&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=30.242346%2C59.947737&whatshere%5Bzoom%5D=17&z=17.16"  style={{color: '#eee', fontSize: 12, position: 'absolute', top: 0}}>59.947737,30.242346 — Yandex Maps</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUVBLfEgD" width="800" height="500" frameborder="1" allowfullscreen="true" style={{"position": 'relative'}}></iframe></div>
+          </div>
+          <div className='col-md-5 col-xs-12 card'>
+            <h3 style={{padding: 18}}>Оставить заявку?</h3>
+            <form action="/api/form" method="post" style={{flexDirection: 'column', display: 'flex', padding: 18}}>
+            <input type="text" id="first" name="first" placeholder='Телефон' style={{}}/>
+            <br/>
+            <input type="text" id="last" name="last" />
+            <br/>
+            <button type="submit">Submit</button>
+          </form>
+
           </div>
         </div>
       </main>
