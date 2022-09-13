@@ -4,8 +4,6 @@ import styles from '../styles/Home.module.css'
 import { Button } from '@nextui-org/react';
 import Link from "next/link";
 import React, { useState } from "react";
-import Router from "next/router";
-import Fade from './fade'
 
 import { useTheme, Text } from '@nextui-org/react';
 
