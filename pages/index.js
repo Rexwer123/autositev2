@@ -193,7 +193,7 @@ export default function Home() {
         <Button css={{ 'fontWeight': 650, 'marginTop': 40 }}>ОСТАВИТЬ ЗАЯВКУ</Button>
       </main>
 
-      <main className={styles.main} style={{ background: `black`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', color: 'white', paddingBottom: 100 }} >
+      <main className={styles.main} style={{ background: `url('https://w7.pngwing.com/pngs/473/267/png-transparent-gradient-desktop-color-background-miscellaneous-blue-atmosphere.png')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', color: 'white', paddingBottom: 100 }} >
         <div className={'container'}>
           <LiftedSection t={'Кто мы?'} p={'Команда профессионалов своего дела, которая вот уже больше 10 лет помогает клиентам решить любые проблемы с автомобилем или мотоциклом'} styles={{ marginTop: 50, marginBottom: 50 }} />
           <div className='row' style={{marginTop: 100, justifyContent: 'space-between'}}>
