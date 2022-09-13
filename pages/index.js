@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.css'
 import { Button } from '@nextui-org/react';
 import Link from "next/link";
 import React, { useState } from "react";
+import Router from "next/router";
+import Fade from './fade'
 
 import { useTheme, Text } from '@nextui-org/react';
 
@@ -11,9 +13,8 @@ const NavItem = ({ text, href, active }) => {
   return (
     <Link href={href}>
       <a
-        className={`nav__item ${
-          active ? "active" : ""
-        }`}
+        className={`nav__item ${active ? "active" : ""
+          }`}
       >
         {text}
       </a>
@@ -24,6 +25,7 @@ const NavItem = ({ text, href, active }) => {
 const MENU_LIST = [
   { text: "Главная", href: "/" },
   { text: "Услуги", href: "/about" },
+  { text: "Галерея", href: "/about" },
   { text: "Контакты", href: "/contact" },
 ];
 
@@ -69,10 +71,109 @@ const Service = (props) => {
   const { url, title, description } = props
 
   return (
-      <>
-        <h1>{title}</h1>
-        <Image width={100} height={100} src={url}/>
-        </>
+    <>
+      <h1>{title}</h1>
+      <Image width={100} height={100} src={url} />
+    </>
+  )
+}
+
+const servicesCards = [{
+  url: 'https://userstyles.org/style_screenshots/189336_after.jpeg',
+  title: 'UwU'
+}]
+
+const ServiceCard = (props) => {
+  const { h3, h6, p } = props
+  return (
+    <li className='service'>
+      <h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>{h3}</h3>
+      <h6 style={{ paddingLeft: 5, marginTop: 15, marginBottom: 10 }}>{h6}</h6>
+      <p style={{ paddingLeft: 5, fontStyle: 'italic', fontWeight: 'lighter' }}>{p}</p>
+    </li>
+  )
+}
+
+const Block = (props) => {
+  const { src, title, p, button } = props
+
+  const styles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
+  return (
+    <>
+      <div className={'row'} style={props.styles ? { ...props.styles, minHeight: 300 } : { minHeight: 300 }}>
+        <h1 style={{ textAlign: 'center', marginBottom: 20 }}>{title}</h1>
+        <h4 style={{ textAlign: 'center', fontWeight: 'lighter' }}>{p}</h4>
+        <div className={'col-md-6 col-xs-12'}>
+          <ul>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Ремонт рулевого управления</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Ремонт ДВС</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Ремонт головки блока цилиндров</h3></li>
+          </ul>
+        </div>
+        <div className={'col-md-6 col-xs-12'} styles={styles}>
+
+          <ul>
+            <ServiceCard h3="Ремонт АКПП и МКПП" h6="Диагностика и ремонт автоматических и механических коробок передач" p="Первые признаки неисправной трансмиссии, проявляющиеся сбоями в переключении передач - серьезный повод бить тревогу и срочно искать автосервис, где смогут произвести диагносту и ремонт КПП в короткие сроки." />
+            <ServiceCard h3="Ремонт стартеров, генераторов" h6="Осмотр электрика, диагностика и ремонт стартеров и генераторов" p="Генератор относятся к числу основных элементов пуско-зарядной цепи автомобиля, поэтому ремонт данных агрегатов лучше доверять профессионалам" />
+            <ServiceCard h3="Ремонт тормозной системы" h6="Диагностика и ремонт тормозной системы автомобиля" p=" Тормозная система является важным узлом транспортного средства. Любые неисправности тормозной системы могут привести к запрету эксплуатации автомобиля. " />
+
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Установка автомагнитол</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Развал-схождение колес</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Балансировка колёс</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена масла</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена ремня и цепи ГРМ</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена масляного фильтра</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена воздушного фильтра</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена топливного фильтра</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена тормозной жидкости</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена свечей зажигания</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена поршневых колец</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена радиатора</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена сцепления</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена насоса охлаждающей жидкости</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена масляного насоса</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Замена жидкости ГУР</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Регулировка клапанов</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Кузовной ремонт</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Полировка фар, кузова</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Покраска кузова</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Восстановление геометрии кузова</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Предпродажная подготовка авто</h3></li>
+            <li className='service'><h3 style={{ paddingLeft: 5, paddingTop: 5, fontWeight: 'lighter', textDecoration: 'underline' }}>Ремонт и реставрация ретро-автомобилей</h3></li>
+          </ul>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const LiftedSection = (props) => {
+  const { t, p, inner } = props
+
+  const defaultStyle = { minHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }
+
+  return (
+    <>
+      <div className={'row'} style={props.styles ? { ...props.styles, ...defaultStyle } : defaultStyle}>
+        <h1 style={{ textAlign: 'center', marginBottom: 20 }}>{t}</h1>
+        <h4 style={{ textAlign: 'center', fontWeight: 'lighter' }}>{p}</h4>
+        {inner || ''}
+      </div>
+    </>
+  )
+}
+
+const Upslide = (props) => {
+  return (
+    <div className='slide'>
+      <div></div>
+    </div>
   )
 }
 
@@ -82,31 +183,51 @@ export default function Home() {
       <Head>
         <title>Автосервис</title>
         <meta name="description" content="Проверенный автосервис на Приморской! Гарантированный сервис высшего класса для вашего авто. Любые виды работ. Рестоврация ретро-авто." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Navbar></Navbar>
+
       <main className={styles.main}>
         <div className={styles.intro}>
           <h1>АВТОСЕРВИС ВЫСШЕГО КЛАССА</h1>
           <h3>ЛЮБЫЕ ВИДЫ РАБОТ ДЛЯ ВАШЕГО АВТОМОБИЛЯ ОТ НАШИХ ПРОФЕССИОНАЛОВ</h3>
         </div>
-        <Button css={{'fontWeight': 650, 'marginTop': 40}}>ОСТАВИТЬ ЗАЯВКУ</Button>
+        <Button css={{ 'fontWeight': 650, 'marginTop': 40 }}>ОСТАВИТЬ ЗАЯВКУ</Button>
       </main>
-      <section style={{marginTop: 40}}>
-        <div className={styles.container}>
-          <h3 className={styles.title}>Услуги</h3>
-          <div className={styles.grid}>
-            {[{
-              url: 'https://userstyles.org/style_screenshots/189336_after.jpeg',
-              title: 'UwU'
-            }].map(item => (<div className={'card'}><Service url={ item.url } title={ item.title }/></div>))}
+
+      <main className={styles.main} style={{ background: `black`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', color: 'white', paddingBottom: 100 }} >
+        <div className={'container'}>
+          <LiftedSection t={'Кто мы?'} p={'Команда профессионалов своего дела, которая вот уже больше 10 лет помогает клиентам решить любые проблемы с автомобилем или мотоциклом'} styles={{ marginTop: 50, marginBottom: 50 }} />
+          <div className='row' style={{marginTop: 100, justifyContent: 'space-between'}}>
+            <div className='col-md-5 col-xs-12' style={{border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35}}>
+              <h3 style={{textAlign: 'left', paddingLeft: 20, paddingTop: 45}}>Услуги по ремонту автомобилей</h3>
+              <ul style={{marginTop: 45, padding: 0}}>
+                <li className='service' style={{fontSize: '1.3em'}}>Установка аудио-оборудования</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Замена сцепления</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Замена радиатора</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Ремонт двигателя</li>
+              </ul>
+            </div>
+            <div className='col-md-5 col-xs-12' style={{border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35}}>
+              <h3 style={{textAlign: 'left', paddingLeft: 20, paddingTop: 45}}>Услуги по ремонту мотоциклов</h3>
+              <ul style={{marginTop: 45, padding: 0}}>
+                <li className='service' style={{fontSize: '1.3em'}}>Установка аудио-оборудования</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Замена сцепления</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Замена радиатора</li>
+                <li className='service' style={{fontSize: '1.3em'}}>Ремонт двигателя</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </section>
+      </main>
 
       <footer className={styles.footer}>
         Designed and Developed by Leonid Brown | leorexwer@gmail.com
       </footer>
     </div>
   )
+
+
 }
