@@ -36,22 +36,22 @@ const Navbar = () => {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" onClick={() => scrollTo(mainRef)} style={{cursor: 'pointer'}}>Главная</a>
+            <a class="nav-link" onClick={() => scrollTo(mainRef)} style={{ cursor: 'pointer' }}>Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onClick={() => scrollTo(whoRef)}  style={{cursor: 'pointer'}}>Кто мы?</a>
+            <a class="nav-link" onClick={() => scrollTo(whoRef)} style={{ cursor: 'pointer' }}>Кто мы?</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  onClick={() => scrollTo(serviceRef)}  style={{cursor: 'pointer'}}>Услуги</a>
+            <a class="nav-link" onClick={() => scrollTo(serviceRef)} style={{ cursor: 'pointer' }}>Услуги</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onClick={() => scrollTo(galRef)}  style={{cursor: 'pointer'}}>Галерея</a>
+            <a class="nav-link" onClick={() => scrollTo(galRef)} style={{ cursor: 'pointer' }}>Галерея</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onClick={() => scrollTo(repRef)}  style={{cursor: 'pointer'}}>Реставрация</a>
+            <a class="nav-link" onClick={() => scrollTo(repRef)} style={{ cursor: 'pointer' }}>Реставрация</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" onClick={() => scrollTo(contactRef)} style={{cursor: 'pointer'}}>Контакты</a>
+            <a class="nav-link" onClick={() => scrollTo(contactRef)} style={{ cursor: 'pointer' }}>Контакты</a>
           </li>
         </ul>
       </div>
@@ -216,7 +216,9 @@ const Forms = () => {
 
   return (
     <>
-      <h3 style={{ padding: 18, color: 'black', fontWeight: 'lighter', marginTop: 30 }}>Оставить заявку?</h3>
+      <br />
+      <h4 style={{ color: 'black', padding: 20, paddingBottom: 0 }}>Оставить заявку</h4>
+      <br />
       <form style={{ paddingLeft: 20, paddingRight: 20 }} noValidate onSubmit={e => e.preventDefault()}>
         {error && (
           <>
@@ -225,16 +227,14 @@ const Forms = () => {
         )}
         {success && (
           <>
-            <h6 style={{ color: 'greed' }}>Обращение успешно отправлено</h6>
+            <h6 style={{ color: 'green' }}>Обращение успешно отправлено</h6>
           </>
         )}
         <div class="form-group">
-          <label for="exampleInputEmail1">Телефон</label>
           <input type="email" class="form-control" id="inputPhone" placeholder="+7 (997) 222-22-22" value={phone} onInput={e => handlePhoneInput(e.target)} />
         </div>
-
+        <br />
         <div class="form-group">
-          <label for="exampleInputPassword1">Проблема</label>
           <textarea type="textarea" class="form-control" id="exampleInputPassword1" value={msg} onInput={e => setMsg(e.target.value)} placeholder="Проблема" />
         </div>
 
@@ -245,6 +245,8 @@ const Forms = () => {
     </>
   )
 }
+
+const BlackOverlay = () => <div style={{ background: 'black', height: '30vh', width: '100vw', position: 'absolute', opacity: 0.3, zIndex: 0 }} />
 
 let mainRef
 let contactRef
@@ -258,44 +260,186 @@ const Main = () => {
 
   return (
     <main ref={mainRef} className={styles.main} id="main">
-        <div className={styles.intro}>
-          <h1>АВТОСЕРВИС ВЫСШЕГО КЛАССА</h1>
-          <h3>ЛЮБЫЕ ВИДЫ РАБОТ ДЛЯ ВАШЕГО АВТОМОБИЛЯ ОТ НАШИХ ПРОФЕССИОНАЛОВ</h3>
-        </div>
-        <Button css={{ 'fontWeight': 650, 'marginTop': 40 }} onClick={() => scrollTo(contactRef)}>ОСТАВИТЬ ЗАЯВКУ</Button>
-      </main>
+      <BlackOverlay />
+      <div className={styles.intro} style={{ zIndex: 1 }}>
+        <h1>АВТОСЕРВИС ВЫСШЕГО КЛАССА</h1>
+        <h3>ЛЮБЫЕ ВИДЫ РАБОТ ДЛЯ ВАШЕГО АВТОМОБИЛЯ ОТ НАШИХ ПРОФЕССИОНАЛОВ</h3>
+      </div>
+      <Button css={{ 'fontWeight': 650, 'marginTop': 40 }} onClick={() => scrollTo(contactRef)}>ОСТАВИТЬ ЗАЯВКУ</Button>
+    </main>
   )
 }
+
+const Card = (props) => (
+  <div style={
+    {
+      border: '1px solid lightgray',
+      borderRadius: 12,
+      padding: 16,
+      background: 'white'
+    }
+  }>
+    {props.children}
+  </div>
+)
 
 const Contacts = () => {
   contactRef = React.useRef()
 
   return (
     <>
-    <h1 ref={contactRef} style={{padding: 20, paddingTop: 30, textAlign: 'center'}}>Контакты</h1>
-    <main className={styles.main} style={{ background: 'white' }}>
-      <div className='row' styles={{ height: '100%'}}>
-
-        <div className='col-md-6 col-xs-12' style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-        <a href="https://yandex.ru/maps/2/saint-petersburg/?utm_medium=mapframe&utm_source=maps">Saint Petersburg</a><a href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.242879%2C59.946032&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=30.242895%2C59.948161&whatshere%5Bzoom%5D=16.41&z=16.41">Odoevskogo Street, 26 — Yandex Maps</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUVFUDw3C" width="560" height="400" frameborder="1" allowfullscreen="true"></iframe>
-        </div>
-        <div className='col-md-5 col-xs-12' style={{padding: 30}}>
-          <h5 style={{color: 'black', padding: 20, paddingBottom: 0, fontWeight: 'lighter'}}>+7 (922) 999-99-99</h5>
-          <h5 style={{color: 'black', padding: 20, paddingBottom: 0,  fontWeight: 'lighter'}}>Санкт-Петербург, Васильевский Остров</h5>
-          <Forms></Forms>
-        </div>
-      </div>
-    </main>
+      <main className={styles.main} style={{ background: 'black', minHeight: '40vh', paddingBottom: 100, paddingTop: 100, color: 'white' }}>
+        <Row>
+          <Col size={6}>
+            <iframe src="https://yandex.ru/map-widget/v1/-/CCUVFUDw3C" width="100%" height="100%" allowfullscreen="true"></iframe>
+          </Col>
+          <Col size={6}>
+            <Card>
+              <h4 style={{ color: 'black', padding: 20, paddingBottom: 0 }}>Контакты</h4>
+              <h5 style={{ color: 'black', padding: 20, paddingBottom: 0, fontWeight: 'lighter' }}>+7 (922) 999-99-99</h5>
+              <h5 style={{ color: 'black', padding: 20, paddingBottom: 0, fontWeight: 'lighter' }}>Санкт-Петербург, Васильевский Остров</h5>
+              <Forms />
+            </Card>
+          </Col>
+        </Row>
+      </main>
     </>
   )
 }
+//https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_1.png
+
+const useInterval = (callback, delay) => {
+  const savedCallback = React.useRef();
+
+  // Remember the latest function.
+  React.useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  // eslint-disable-next-line
+  React.useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};
+
+const CarouselRep = () => {
+  const [index, setIndex] = React.useState(0)
+
+  useInterval(() => {
+    if(index === 3){
+      return setIndex(0)
+    }
+
+    setIndex(index + 1)
+  }, 5000)
+
+  const slides = [
+    {
+      t: 'Кузов до начала реставрации',
+      src: 'https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_1.png'
+    },
+    {
+      t: 'Начало кузовных работ',
+      src: 'https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_2.png'
+    },
+    {
+      t: 'После процесса покраски',
+      src: 'https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_15.png'
+    },
+    {
+      t: 'Результат реставрации',
+      src: 'https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_17.png'
+    }
+  ]
+
+  const colStyle = { justifyContent: 'center', alignItems: 'center', textAlign: 'left', display: 'flex', flexDirection: 'column' }
+
+  return (
+    <>
+      <br />
+      <div style={{ minHeight: '40vh', maxWidth: '100vw', width: '100vw' }}>
+      <div className='row' style={{ height: '100%' }}>
+        <div className='col-md-4' style={colStyle}>
+          <div>
+            <h2 style={{ color: 'black', fontWeight: 'bold' }}>Волга ГАЗ-24</h2>
+            <h3 style={{ textAlign: 'left' }}>{slides[index].t}</h3>
+          </div>
+        </div>
+        <div className='col-md-8' style={colStyle}>
+          <div>
+            <img src={slides[index].src} alt='' />
+          </div>
+        </div>
+      </div>
+        <br />
+      </div>
+    </>
+  )
+}
+
+const CarouselRe = () => {
+  galRef = React.useRef(null)
+  return (
+    <>
+      <div style={{ position: 'absolute', zIndex: -10 }}>
+      </div>
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div className="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div className="carousel-item active">
+
+            <div class="carousel-caption d-none d-md-block">
+
+              <h5>Внешний вид кузова до реставрации</h5>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img ssrc="" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h4 style={{ color: 'white', fontWeight: 'bold' }}>Волга ГАЗ-24</h4>
+              <h5>Кузовной ремонт</h5>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_15.png" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h4 style={{ color: 'white', fontWeight: 'bold' }}>Волга ГАЗ-24</h4>
+              <h5>После покраски</h5>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_17.png" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h4 style={{ color: 'white', fontWeight: 'bold' }}>Волга ГАЗ-24</h4>
+              <h5>Результат</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const Row = (props) => <div className='row' style={{ width: '80%' }}>{props.children}</div>
+const Col = (props) => <div className={`col-md-${props.size} col-xs-12`} style={props.style}>{props.children}</div>
 
 const Who = () => {
   whoRef = React.useRef()
 
   return (
     <main ref={whoRef} className={styles.main} style={{ background: `url('https://w7.pngwing.com/pngs/473/267/png-transparent-gradient-desktop-color-background-miscellaneous-blue-atmosphere.png')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', color: 'white', paddingBottom: 100 }} >
-    <div className={'container'}>
+      <div className={'container'}>
       <LiftedSection t={'Кто мы?'} p={'Команда профессионалов своего дела, которая вот уже больше 10 лет помогает клиентам решить любые проблемы с автомобилем или мотоциклом. Прямое сотрудничество с поставщиками запчастей обеспечивает быстрое выполнение работы.'} styles={{ marginTop: 50, marginBottom: 50 }} />
       <div className={'row'} style={{ justifyContent: 'center' }}>
         <img style={{ position: 'relative', width: '60%', height: 'auto' }} src='https://www.avtovzglyad.ru/media/article/image_09.jpg.740x400_q85_box-0%2C52%2C870%2C522_crop_detail_upscale.jpg' />
@@ -303,8 +447,8 @@ const Who = () => {
       <div className={'row'}>
         <h3></h3>
       </div>
-    </div>
-  </main>
+      </div>
+    </main>
   )
 }
 
@@ -313,36 +457,36 @@ const Services = () => {
 
   return (
     <main ref={serviceRef} className={styles.main} style={{ paddingBottom: 100 }}>
-        <div className={styles.container}>
-          <h1 style={{ textAlign: 'center', marginBottom: 20, marginTop: 100 }}>Популярные услуги</h1>
-          <div className='row' style={{ marginTop: 100, justifyContent: 'space-between' }}>
-            <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
-              <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45, textDecoration: 'underline' }}>Автомобили</h3>
-              <ul style={{ marginTop: 45, padding: 0 }}>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Установка аудио-оборудования</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена сцепления</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена радиатора</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт двигателя</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Реcтаврация ретро-авто</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт ходовой части</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт пневмо-подвески</li>
-              </ul>
-            </div>
-            <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
-              <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45, textDecoration: 'underline' }}>Мотоциклы</h3>
-              <ul style={{ marginTop: 45, padding: 0 }}>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Кастомайзинг</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт тормозной системы</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена колёс и сцепления</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Покраска</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Аерография</li>
-                <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт двигателя</li>
-              </ul>
-            </div>
+      <div className={styles.container}>
+        <h1 style={{ textAlign: 'center', marginBottom: 20, marginTop: 100 }}>Популярные услуги</h1>
+        <div className='row' style={{ marginTop: 100, justifyContent: 'space-between' }}>
+          <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
+            <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45, textDecoration: 'underline' }}>Автомобили</h3>
+            <ul style={{ marginTop: 45, padding: 0 }}>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Установка аудио-оборудования</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Залив расходных жидкостей (масло, тормозная жидкость и тд.)</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена сцепления</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена радиатора</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт двигателя</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Реcтаврация ретро-авто</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт ходовой части</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт пневмо-подвески</li>
+            </ul>
+          </div>
+          <div className='col-md-5 col-xs-12' style={{ border: '1px solid lightgrey', background: 'white', color: 'black', borderRadius: 20, paddingBottom: 35 }}>
+            <h3 style={{ textAlign: 'left', paddingLeft: 20, paddingTop: 45, textDecoration: 'underline' }}>Мотоциклы</h3>
+            <ul style={{ marginTop: 45, padding: 0 }}>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Кастомайзинг</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт тормозной системы</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Замена колёс и сцепления</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Покраска</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Аерография</li>
+              <li className='service' style={{ fontSize: '1.3em', fontWeight: 'lighter' }}>Ремонт двигателя</li>
+            </ul>
           </div>
         </div>
-      </main>
+      </div>
+    </main>
   )
 }
 
@@ -350,46 +494,13 @@ const Rep = () => {
   repRef = React.useRef(null)
 
   return (
-    <main ref={repRef} className={styles.main} style={{background: `url('https://avtotachki.com/wp-content/uploads/2020/03/7d-1.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', textAlign: 'center'}}>
-    <div style={{padding: 30, background: 'rgba(0,0,0,0.75)'}}>
-    <h1>МЫ ЛЮБИМ РЕТРО-АВТОМОБИЛИ</h1>
-    <h5 styles={{fontWeight: 'lighter', textAlign: 'center'}}>И даже знаем, как поставить их на ноги!<br/>Капитальный ремонт, замена электрики, покраска и тюнинг на любой вкус.</h5>
-    </div>
-  </main>
-  )
-}
-
-const Gal = () => {
-  galRef = React.useRef(null)
-
-  return (
-    <main ref={galRef} className={styles.main} style={{ background: 'white' }}>
-        <h2 style={{ color: 'black', marginTop: 50, marginBottom: 30 }}>Реставрация Волги ГАЗ-24</h2>
-        <>
-          {!isMobile && (
-            <>
-              <div className={styles.containers} style={{ maxHeight: 700 }}>
-                <div className={styles.box}>
-                  <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_1.png" />
-                  <span style={{color: 'black', fontSize: 15, textAlign: 'left', padding: 12, fontWeight: 'lighter'}}>До реставрации</span>
-                </div>
-                <div className={styles.box}>
-                  <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_2.png" />
-                  <span style={{color: 'black', fontSize: 15, textAlign: 'left', padding: 12, fontWeight: 'lighter'}}>Кузовной ремонт</span>
-                </div>
-                <div className={styles.box}>
-                  <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_15.png" />
-                  <span style={{color: 'black', fontSize: 15, textAlign: 'left', padding: 12, fontWeight: 'lighter'}}>После покраски</span>
-                </div>
-                <div className={styles.box}>
-                  <img src="https://cdn.avtokapitan.ru/portfolio/2018/01/1/gaz-24-volga_17.png" />
-                  <span style={{color: 'black', fontSize: 15, textAlign: 'left', padding: 12, fontWeight: 'lighter'}}>Результат</span>
-                </div>
-              </div>
-            </>
-          )}
-        </>
-      </main>
+    <main ref={repRef} className={styles.main} style={{ background: `url('https://avtotachki.com/wp-content/uploads/2020/03/7d-1.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', textAlign: 'center', color: 'white', minHeight: '30vh' }}>
+      <BlackOverlay />
+      <div style={{ zIndex: 10 }}>
+        <h1>МЫ ЛЮБИМ РЕТРО-АВТОМОБИЛИ</h1>
+        <h5 styles={{ fontWeight: 'lighter', textAlign: 'center' }}>И даже знаем, как поставить их на ноги!<br />Капитальный ремонт, замена электрики, покраска и тюнинг на любой вкус.</h5>
+      </div>
+    </main>
   )
 }
 
@@ -407,12 +518,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main/>
-      <Who/>
-      <Services/>
-      <Rep/>
-      <Gal/>
-      <Contacts/>
+      <Main />
+      <Who />
+      <Services />
+      <Rep />
+      <CarouselRep />
+      <Contacts />
     </div>
   )
 
